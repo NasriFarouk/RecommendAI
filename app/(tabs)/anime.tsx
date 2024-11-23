@@ -11,6 +11,8 @@ export default function AnimeScreen() {
   const [recommendations, setRecommendations] = useState<any[]>([]);
 
   useEffect(() => {
+    console.log("Fetching genres...");
+    console.log('Fetching recommendations...');
     const fetchGenres = async () => {
       try {
         const response = await fetch("https://graphql.anilist.co", {
@@ -60,7 +62,7 @@ export default function AnimeScreen() {
       const data = await response.json();
       setRecommendations(data.data.Page.media);
     } catch (error) {
-      console.error("Error fetching recommendations:", error);
+      console.error("Error fetchng recommendations:", error);
     }
   };
 
